@@ -21,6 +21,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -180,7 +181,11 @@ public class MainActivity extends AppCompatActivity {
 
         // Resample the saved image to fit the ImageView
         mResultsBitmap = BitmapUtils.resamplePic(this, mTempPhotoPath);
-        
+
+        Matrix matrix = new Matrix();
+        matrix.postRotate(270);
+        mResultsBitmap = Bitmap.createBitmap(mResultsBitmap,0,0,mResultsBitmap.getWidth(),mResultsBitmap.getHeight(),matrix,true);
+
         // Detect the faces
         Emojifier.detectFaces(this, mResultsBitmap);
         
