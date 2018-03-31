@@ -70,6 +70,7 @@ class BitmapUtils {
         // Decode the image file into a Bitmap sized to fill the View
         bmOptions.inJustDecodeBounds = false;
         bmOptions.inSampleSize = scaleFactor;
+        
 
         return BitmapFactory.decodeFile(imagePath);
     }
